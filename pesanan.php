@@ -426,6 +426,7 @@ $paket = get_data("SELECT * FROM `paket`");
             });
             $('body').on('click', '.deleteData', function() {
                 var id = $(this).data("id");
+                console.log('delete button clicked')
                 swal({
                     title: "Are you sure to Delete?",
                     icon: "warning",
@@ -442,8 +443,8 @@ $paket = get_data("SELECT * FROM `paket`");
                             },
                             success: function(data) {
                                 $('#book-list').DataTable().ajax.reload();
-                                console.log('delete data')
                                 swal("Good job!", "Pesanan Berhasil dihapus!", "success");
+                                console.log('delete data')
                             },
                             error: function(data) {
                                 swal("Sorry!", "Pesanan Gagal dihapus", "error");
