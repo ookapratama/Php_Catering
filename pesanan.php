@@ -189,7 +189,7 @@ $paket = get_data("SELECT * FROM `paket`");
                 <div class="modal-body">
                     <form id="formUpdate" action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                         <div class="form-row">
-                            <input name="id_booking" type="hidden" class="form-control" id="idUpdate" placeholder="Title" aria-describedby="inputGroupPrepend" required>
+                            <input name="id" type="hidden" class="form-control" id="idUpdate" placeholder="Title" aria-describedby="inputGroupPrepend" required>
                             <div class="col-md-12 mb-3">
                                 <label for="pelangganUpdate">Pelanggan</label>
                                 <select name="pelanggan" class="select2-example form-control" id="pelangganUpdate" required>
@@ -389,7 +389,7 @@ $paket = get_data("SELECT * FROM `paket`");
                     },
                     dataType: "JSON",
                     success: function(data) {
-                        $('#idUpdate').val(data.id_booking);
+                        $('#idUpdate').val(data.id);
                         $('#pelangganUpdate').val(data.id_users).trigger('change');
                         $('#paketUpdate').val(data.id_paket).trigger('change');
                         $('#jumlahUpdate').val(data.jumlah);

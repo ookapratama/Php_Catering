@@ -169,7 +169,7 @@ function deletes($data, $del)
 function deletes_pesanan($data, $del)
 {
         global $connect;
-        $data = mysqli_query($connect, "DELETE FROM $del WHERE id_booking=" . $data . "");
+        $data = mysqli_query($connect, "DELETE FROM $del WHERE id=" . $data . "");
         // var_dump($data);
         if ($data) {
                 return json_encode(array('success' => 1));
@@ -294,7 +294,7 @@ function byId($data, $table)
 
 function byIdForPesanan($data, $table)
 {
-        $data = query("SELECT * FROM $table WHERE `id_booking`=" . $data['id'] . "");
+        $data = query("SELECT * FROM $table WHERE `id`=" . $data['id'] . "");
         echo json_encode($data);
 }
 
@@ -360,7 +360,7 @@ function show_pesanan()
         if (!empty($_POST["order"])) {
                 $data .= 'ORDER BY ' . $_POST['order']['0']['column'] . ' ' . $_POST['order']['0']['dir'] . ' ';
         } else {
-                $data .= 'ORDER BY id_booking DESC ';
+                $data .= 'ORDER BY id DESC ';
         }
         if ($_POST["length"] != -1) {
                 $data .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -392,8 +392,8 @@ function show_pesanan()
                                                 <i class="ti-more-alt"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="javascript:void(0)" class="dropdown-item updateData" data-toggle="modal" data-id="' . $v['id_booking'] . '" title="Update" data-target="#updateModal">Edit</a>
-                                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $v['id_booking'] . '" class="dropdown-item text-danger deleteData">Delete</a>
+                                                <a href="javascript:void(0)" class="dropdown-item updateData" data-toggle="modal" data-id="' . $v['id'] . '" title="Update" data-target="#updateModal">Edit</a>
+                                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $v['id'] . '" class="dropdown-item text-danger deleteData">Delete</a>
                                                 </div>
                                                 </div>
                                         </td>'
