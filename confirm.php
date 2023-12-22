@@ -64,6 +64,8 @@ $data = query("SELECT * FROM `paket` WHERE id='" . $_GET['v'] . "'");
     <script type="text/javascript">
         $('#formNew').submit(function(e) {
             e.preventDefault();
+            console.log('cliced submit');
+            console.log(new FormData(this));
             $.ajax({
                 type: "POST",
                 url: 'confirm_new.php',
@@ -72,11 +74,22 @@ $data = query("SELECT * FROM `paket` WHERE id='" . $_GET['v'] . "'");
                 processData: false,
                 contentType: false,
                 cache: false,
+                // success: (data) => {
+                //     console.log(data)
+                //     swal("Good job!", "Menu akan Dikirimkan!", "success")
+                //         .then(() => {
+                //             window.location.replace('index.php');
+                //         })
+                // },
+                // error: (xhr, status, error) => {
+                //     console.log('error:', error);
+                //     swal("Sorry!", "Menu Gagal Dikurangi", "error");
+                // }
             })
             .then(function(response) {
+                console.log(response)
                 var jsonData = JSON.parse(response);
                 console.log(jsonData)
-                console.log(response)
                 if (jsonData.success == "1") {
                     swal("Good job!", "Menu Akan Di Kirimkan!", "success")
                     .then(() => {

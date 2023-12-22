@@ -350,7 +350,7 @@ function update_paket($data, $file)
 function show_pesanan()
 {
         global $connect;
-        $data = "SELECT `pesanan`.* , `users`.`username`, `paket`.`nama` FROM `pesanan` LEFT JOIN `users` ON `users`.`id`=`pesanan`.`id_users` LEFT JOIN `paket` ON `paket`.`id`=`pesanan`.`id_paket`  ";
+        $data = "SELECT `pesanan`.* , `users`.`username`, `paket`.`nama` FROM `pesanan` LEFT JOIN `users` ON `users`.`id`=`pesanan`.`id_users` LEFT JOIN `paket` ON `paket`.`id`=`pesanan`.`id_paket`";
         if (!empty($_POST["search"]["value"])) {
                 $data .= 'WHERE `users`.`username` LIKE "%' . $_POST["search"]["value"] . '%" ';
                 $data .= 'OR `paket`.`nama` LIKE "%' . $_POST["search"]["value"] . '%" ';
@@ -383,20 +383,20 @@ function show_pesanan()
                         'total_harga' => $v['total_harga'],
                         'bukti' => "<a href='bukti/" . $v['bukti'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#baruModal'>
                         Lihat
-                    </button></a>",
+                        </button></a>",
                         'status_pembayaran' => $v['status_pembayaran'],
                         'status_proses' => $v['status_proses'],
                         'button' => '<td class="text-right">
-                        <div class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="btn btn-floating" aria-haspopup="true" aria-expanded="false">
-                                <i class="ti-more-alt"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="javascript:void(0)" class="dropdown-item updateData" data-toggle="modal" data-id="' . $v['id_booking'] . '" title="Update" data-target="#updateModal">Edit</a>
-                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $v['id_booking'] . '" class="dropdown-item text-danger deleteData">Delete</a>
-                            </div>
-                        </div>
-                    </td>'
+                                        <div class="dropdown">
+                                        <a href="#" data-toggle="dropdown" class="btn btn-floating" aria-haspopup="true" aria-expanded="false">
+                                                <i class="ti-more-alt"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="javascript:void(0)" class="dropdown-item updateData" data-toggle="modal" data-id="' . $v['id_booking'] . '" title="Update" data-target="#updateModal">Edit</a>
+                                                <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $v['id_booking'] . '" class="dropdown-item text-danger deleteData">Delete</a>
+                                                </div>
+                                                </div>
+                                        </td>'
                 ];
         }
 
@@ -503,8 +503,8 @@ function update_Pesanan($data)
         `status_pembayaran`='" . $pembayaran . "',
         `status_proses`='" . $proses . "'  
         WHERE id_booking=" . $data['id_booking'] . "");
-    
-        
+
+
         if ($data) {
                 return json_encode(array('success' => 1));
         } else {
@@ -590,8 +590,8 @@ function cart_add($data)
 {
         global $connect;
         $id = $data['id'];
-        $jumlah = (int)$data['jumlah']+1;
-        $data = mysqli_query($connect, "UPDATE `keranjang` SET `jumlah`='" . $jumlah . "' WHERE paket_id=" . $id . ""); 
+        $jumlah = (int)$data['jumlah'] + 1;
+        $data = mysqli_query($connect, "UPDATE `keranjang` SET `jumlah`='" . $jumlah . "' WHERE paket_id=" . $id . "");
         if ($data) {
                 return json_encode(array('success' => 1));
         } else {
@@ -604,12 +604,12 @@ function cart_delete($data)
         global $connect;
         $id = $data['id'];
         $jumlah = (int)$data['jumlah'];
-        if($jumlah<=1){
+        if ($jumlah <= 1) {
                 $data = mysqli_query($connect, "DELETE FROM `keranjang` WHERE paket_id=" . $id . "");
-        }else{
-                $jumlah = $jumlah-1;
+        } else {
+                $jumlah = $jumlah - 1;
 
-                $data = mysqli_query($connect, "UPDATE `keranjang` SET `jumlah`='" . $jumlah . "' WHERE paket_id=" . $id . ""); 
+                $data = mysqli_query($connect, "UPDATE `keranjang` SET `jumlah`='" . $jumlah . "' WHERE paket_id=" . $id . "");
         }
         if ($data) {
                 return json_encode(array('success' => 1));
@@ -619,11 +619,12 @@ function cart_delete($data)
 }
 
 
-function checkout(){
+function checkout()
+{
         global $connect;
         session_start();
         $data = get_data("SELECT * FROM `keranjang` WHERE `user_id`=" . $_SESSION['i'] . "");
-        foreach($data as $v){
+        foreach ($data as $v) {
                 $harga = query("SELECT harga FROM `paket` WHERE id=" . $v['paket_id'] . "");
                 $total = $v['jumlah'] * $harga['harga'];
                 $data = mysqli_query($connect, "INSERT INTO `pesanan` (`id_users`, `id_paket`, `jumlah`, `total_harga`, `tgl_pesanan`, `tgl_kirim`, `status_proses`) VALUES (" . $_SESSION['i'] . ", " . $v['paket_id'] . ", " . $v['jumlah'] . ", " . $total . ", '" . date('Y-m-d') . "', '" . date('Y-m-d', strtotime('+3 days')) . "', 'Pending')");
@@ -643,53 +644,53 @@ function metode()
         $kriteriaMinC1 = 0;
         $kriteriC2 = [];
         $kriteriaMinC2 = 0;
-        $hasilK1=[];
-        $hasilK2=[];
+        $hasilK1 = [];
+        $hasilK2 = [];
         $kriteriaMinC1 = $data[0]['harga'];
-        foreach($data as $v){
+        foreach ($data as $v) {
                 $kriteriaMinC1 =  $v['harga'] < $kriteriaMinC1 ? $v['harga'] : $kriteriaMinC1;
         }
-        foreach($data as $v){
+        foreach ($data as $v) {
                 $jum = count(explode(', ', $v['menu']));
                 array_push($kriteriC2, $jum);
-                $d =[
+                $d = [
                         'menu' => $jum,
                         'harga' => $v['harga']
                 ];
                 array_push($datas, $d);
         }
         $kriteriaMinC2 = $kriteriC2[0];
-        for($i=0; $i<count($kriteriC2);$i++){
+        for ($i = 0; $i < count($kriteriC2); $i++) {
                 $kriteriaMinC2 =  $kriteriaMinC2 < $kriteriC2[$i] ? $kriteriaMinC2 : $kriteriC2[$i];
         }
 
-        for($i=0; $i<count($data);$i++){
-                array_push($hasilK1, $kriteriaMinC1/$data[$i]['harga']);
-                array_push($hasilK2, $kriteriaMinC2/$kriteriC2[$i]);
+        for ($i = 0; $i < count($data); $i++) {
+                array_push($hasilK1, $kriteriaMinC1 / $data[$i]['harga']);
+                array_push($hasilK2, $kriteriaMinC2 / $kriteriC2[$i]);
         }
 
         $kriteriaMaxC1 = $hasilK1[0];
         $kriteriaMaxC2 = $hasilK2[0];
-        for($i=0; $i<count($hasilK1);$i++){
+        for ($i = 0; $i < count($hasilK1); $i++) {
                 $kriteriaMaxC1 =  $kriteriaMaxC1 > $hasilK1[$i] ? $kriteriaMaxC1 : $hasilK1[$i];
                 $kriteriaMaxC2 =  $kriteriaMaxC2 > $hasilK2[$i] ? $kriteriaMaxC2 : $hasilK2[$i];
         }
 
         $hasilK11 = [];
         $hasilK22 = [];
-        for($i=0; $i<count($hasilK1);$i++){
-                array_push($hasilK11, $hasilK1[$i]/$kriteriaMaxC1);
-                array_push($hasilK22, $hasilK2[$i]/$kriteriaMaxC2);
+        for ($i = 0; $i < count($hasilK1); $i++) {
+                array_push($hasilK11, $hasilK1[$i] / $kriteriaMaxC1);
+                array_push($hasilK22, $hasilK2[$i] / $kriteriaMaxC2);
         }
 
         $akhir = [];
-        for($i=0; $i<count($data);$i++){
+        for ($i = 0; $i < count($data); $i++) {
                 $v = [
-                        'name'=>$data[$i]['nama'],
-                        'rank'=>$hasilK1[$i]+$hasilK2[$i]
+                        'name' => $data[$i]['nama'],
+                        'rank' => $hasilK1[$i] + $hasilK2[$i]
                 ];
                 array_push($akhir, $v);
         }
-        
+
         return $akhir;
 }

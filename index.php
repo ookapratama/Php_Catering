@@ -10,7 +10,7 @@ $user = get_rows("SELECT * FROM `users` WHERE `role`='1'");
 $admin = get_rows("SELECT * FROM `users` WHERE `role`='2'");
 $menus = get_rows("SELECT * FROM `paket`");
 $pesanan = get_rows("SELECT * FROM `pesanan`");
-$metode = metode();
+// $metode = metode();
 ?>
 <!-- Content body -->
 <div class="content-body">

@@ -81,7 +81,7 @@ $paket = get_data("SELECT * FROM `paket`");
                     <form id="formNew" action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
-                            <label for="pelangganCreate">Pelanggan</label>
+                                <label for="pelangganCreate">Pelanggan</label>
                                 <select name="pelanggan" class="select2-example form-control" id="pelangganCreate" required>
                                     <?php foreach ($user as $v) : ?>
                                         <option value="<?= $v['id'] ?>"><?= $v['username'] ?></option>
@@ -91,7 +91,7 @@ $paket = get_data("SELECT * FROM `paket`");
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
-                            <label for="paketCreate">Paket</label>
+                                <label for="paketCreate">Paket</label>
                                 <select name="paket" class="select2-example form-control" id="paketCreate" required>
                                     <?php foreach ($paket as $v) : ?>
                                         <option value="<?= $v['id'] ?>"><?= $v['nama'] ?></option>
@@ -103,54 +103,54 @@ $paket = get_data("SELECT * FROM `paket`");
                             <div class="col-md-12 mb-3">
                                 <label for="tglPesanan">Tanggal Pesanan</label>
                                 <input name="tglPesanan" type="text" class="form-control" id="tglPesanan" placeholder="Tanggal Pesanan" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Tanggal Pesanan.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Tanggal Pesanan.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="tglKirim">Tanggal Kirim</label>
                                 <input name="tglKirim" type="text" class="form-control" id="tglKirim" placeholder="Tanggal Kirim" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Tanggal Kirim.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Tanggal Kirim.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="jumlahCreate">Jumlah</label>
                                 <input name="jumlah" type="text" class="form-control" id="jumlahCreate" placeholder="jumlah" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Jumlah.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Jumlah.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="totalCreate">Total</label>
                                 <input name="total" type="text" class="form-control" id="totalCreate" placeholder="total" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Total.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Total.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="buktiCreate">Bukti</label>
                                 <input name="bukti" type="text" class="form-control" id="buktiCreate" placeholder="bukti" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Bukti.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Bukti.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="pembayaranCrate">Status Pembayaran</label>
                                 <select name="pembayaran" class="select2-example form-control" id="pembayaranCrate" required>
-                                        <option value="Selesai">Selesai</option>
-                                        <option value="Failed">Failed</option>
-                                        <option value="Pending" selected>Pending</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Failed">Failed</option>
+                                    <option value="Pending" selected>Pending</option>
                                 </select>
                             </div>
                         </div>
@@ -158,12 +158,12 @@ $paket = get_data("SELECT * FROM `paket`");
                             <div class="col-md-12 mb-3">
                                 <label for="prosesCreate">Status Proses</label>
                                 <select name="proses" class="select2-example form-control" id="prosesCreate" required>
-                                        <option value="Selesai">Selesai</option>
-                                        <option value="Failed">Failed</option>
-                                        <option value="Pending" selected>Pending</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Failed">Failed</option>
+                                    <option value="Pending" selected>Pending</option>
                                 </select>
                             </div>
-                        </div>  
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
@@ -191,7 +191,7 @@ $paket = get_data("SELECT * FROM `paket`");
                         <div class="form-row">
                             <input name="id_booking" type="hidden" class="form-control" id="idUpdate" placeholder="Title" aria-describedby="inputGroupPrepend" required>
                             <div class="col-md-12 mb-3">
-                            <label for="pelangganUpdate">Pelanggan</label>
+                                <label for="pelangganUpdate">Pelanggan</label>
                                 <select name="pelanggan" class="select2-example form-control" id="pelangganUpdate" required>
                                     <?php foreach ($user as $v) : ?>
                                         <option value="<?= $v['id'] ?>"><?= $v['username'] ?></option>
@@ -201,7 +201,7 @@ $paket = get_data("SELECT * FROM `paket`");
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
-                            <label for="paketUpdate">Paket</label>
+                                <label for="paketUpdate">Paket</label>
                                 <select name="paket" class="select2-example form-control" id="paketUpdate" required>
                                     <?php foreach ($paket as $v) : ?>
                                         <option value="<?= $v['id'] ?>"><?= $v['nama'] ?></option>
@@ -213,54 +213,54 @@ $paket = get_data("SELECT * FROM `paket`");
                             <div class="col-md-12 mb-3">
                                 <label for="tglPesanan">Tanggal Pesanan</label>
                                 <input name="tglPesanan" type="text" class="form-control" id="tglPesanan" placeholder="Tanggal Pesanan" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Tanggal Pesanan.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Tanggal Pesanan.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="tglKirim">Tanggal Kirim</label>
                                 <input name="tglKirim" type="text" class="form-control" id="tglKirim" placeholder="Tanggal Kirim" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Tanggal Kirim.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Tanggal Kirim.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="jumlahUpdate">Jumlah</label>
                                 <input name="jumlah" type="text" class="form-control" id="jumlahUpdate" placeholder="jumlah" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Jumlah.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Jumlah.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="totalUpdate">Total</label>
                                 <input name="total" type="text" class="form-control" id="totalUpdate" placeholder="total" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Total.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Total.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="buktiUpdate">Bukti</label>
                                 <input name="bukti" type="text" class="form-control" id="buktiUpdate" placeholder="bukti" aria-describedby="inputGroupPrepend" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a Bukti.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Bukti.
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="pembayaranUpdate">Status Pembayaran</label>
                                 <select name="pembayaran" class="select2-example form-control" id="pembayaranUpdate" required>
-                                        <option value="Selesai">Selesai</option>
-                                        <option value="Failed">Failed</option>
-                                        <option value="Pending" selected>Pending</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Failed">Failed</option>
+                                    <option value="Pending" selected>Pending</option>
                                 </select>
                             </div>
                         </div>
@@ -268,12 +268,12 @@ $paket = get_data("SELECT * FROM `paket`");
                             <div class="col-md-12 mb-3">
                                 <label for="prosesUpdate">Status Proses</label>
                                 <select name="proses" class="select2-example form-control" id="prosesUpdate" required>
-                                        <option value="Selesai">Selesai</option>
-                                        <option value="Failed">Failed</option>
-                                        <option value="Pending" selected>Pending</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Failed">Failed</option>
+                                    <option value="Pending" selected>Pending</option>
                                 </select>
                             </div>
-                        </div> 
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
@@ -304,7 +304,8 @@ $paket = get_data("SELECT * FROM `paket`");
                     },
                     dataType: "json"
                 },
-                "columns": [{
+                "columns": [
+                    {
                         data: 'id'
                     },
                     {
@@ -338,6 +339,7 @@ $paket = get_data("SELECT * FROM `paket`");
                         data: 'button'
                     },
                 ]
+                // console.log(data);
             });
             $('.select2-example').select2({
                 placeholder: 'User'
@@ -345,12 +347,12 @@ $paket = get_data("SELECT * FROM `paket`");
             $('input[name="tglPesanan"]').daterangepicker({
                 timePicker: true,
                 singleDatePicker: true,
-                showDropDowns:true
+                showDropDowns: true
             })
             $('input[name="tglKirim"]').daterangepicker({
                 timePicker: true,
                 singleDatePicker: true,
-                showDropDowns:true
+                showDropDowns: true
             })
             $('#formNew').submit(function(e) {
                 e.preventDefault();
